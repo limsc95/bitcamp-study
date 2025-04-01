@@ -4,7 +4,10 @@ import bitcamp.myapp.cloud.StorageService;
 import bitcamp.myapp.member.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
@@ -150,7 +153,7 @@ public class BoardController {
     return "redirect:list";
   }
 
-  @PostMapping("delete")
+  @GetMapping("delete")
   public String delete(int no, HttpSession session) throws Exception {
 
     Member loginUser = (Member) session.getAttribute("loginUser");
@@ -183,7 +186,7 @@ public class BoardController {
     );
   }
 
-  @PostMapping("file/delete")
+  @GetMapping("file/delete")
   public String fileDelete(
           @RequestParam("no") int fileNo,
           HttpSession session) throws Exception {
